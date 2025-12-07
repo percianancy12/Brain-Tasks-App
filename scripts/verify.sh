@@ -1,0 +1,1 @@
+kubectl describe svc brain-tasks-app-service
