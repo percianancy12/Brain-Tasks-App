@@ -1,9 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: brain-tasks-app
+  name: brain-tasks-app-deployment
+  labels:
+    app: brain-tasks-app
 spec:
-  replicas: 2
+  replicas: 2   # run 2 pods for high availability
   selector:
     matchLabels:
       app: brain-tasks-app
@@ -16,6 +18,4 @@ spec:
       - name: brain-tasks-app
         image: 043206426566.dkr.ecr.ap-south-1.amazonaws.com/brain-tasks-app:latest
         ports:
-        - containerPort: 3000
-      imagePullSecrets:
-      - name: ecr-registry-secret
+        - containerPort: 80
