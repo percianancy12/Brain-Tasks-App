@@ -1,12 +1,9 @@
 version: 0.0
-os: linux
-hooks:
-  BeforeInstall:
-    - location: scripts/preinstall.sh
-      timeout: 300
-  AfterInstall:
-    - location: scripts/deploy.sh
-      timeout: 300
-  ApplicationStart:
-    - location: scripts/verify.sh
-      timeout: 300
+resources:
+  - myAppEKS:
+      type: Kubernetes
+      properties:
+        clusterName: brain-tasks-cluster
+        manifestPaths:
+          - deployment.yaml
+          - service.yaml
