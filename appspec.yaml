@@ -3,7 +3,7 @@ resources:
   - myAppEKS:
       type: Kubernetes
       properties:
-        clusterName: brain-tasks-cluster
+        clusterName: project1-cluster
         manifestPaths:
           - deployment.yaml
           - service.yaml

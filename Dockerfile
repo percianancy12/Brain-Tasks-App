@@ -1,12 +1,14 @@
-# ---- Runner Stage ----
+# Use Nginx lightweight image
 FROM nginx:alpine
+
+# Set working directory to Nginx default HTML folder
 WORKDIR /usr/share/nginx/html
 
-# Copy prebuilt static files from dist
+# Copy your built static files (dist folder) into the container
 COPY dist/ .
 
-# Expose the application port
-EXPOSE 3000
+# Expose port 80 (Nginx default)
+EXPOSE 80
 
-# Start the application
+# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
