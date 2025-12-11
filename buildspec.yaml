@@ -6,7 +6,7 @@ phases:
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin 043206426566.dkr.ecr.ap-south-1.amazonaws.com/project1-ecr-repo
   build:
     commands:
-      - docker build -f dist/Dockerfile -t brain-tasks-app .
+      - docker build -f Dockerfile -t brain-tasks-app .
       - docker tag brain-tasks-app:latest 043206426566.dkr.ecr.ap-south-1.amazonaws.com/project1-ecr-repo/brain-tasks-app:latest
   post_build:
     commands:
