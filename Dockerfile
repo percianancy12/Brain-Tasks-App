@@ -1,14 +1,13 @@
-# Use Nginx lightweight image
 FROM nginx:alpine
 
-# Set working directory to Nginx default HTML folder
-WORKDIR /usr/share/nginx/html
+# Remove default config
+RUN rm /etc/nginx/conf.d/default.conf
 
-# Copy your built static files (dist folder) into the container
+# Copy custom config (must be in repo root)
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+WORKDIR /usr/share/nginx/html
 COPY dist/ .
 
-# Expose port 80 (Nginx default)
 EXPOSE 3000
-
-# Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
